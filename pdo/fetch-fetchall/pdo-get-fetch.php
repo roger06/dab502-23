@@ -1,14 +1,22 @@
+
 <h1>PDO Fetch</h1>
+
+<p>fetch() need to be in a loop, unless returning only one record</p>
+
+<p>
+
+<pre>while  ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    
+}
+</pre>
+</p>
 <?php
 // include('pdo-connect-inc.php');
 
-$db = new PDO('mysql:host=localhost; dbname=customer;','root','');  // XAMPP
-
-
-    $id = $_GET['id'];
-
+include('../basic-connect/pdo-connect.php');
+ 
     // $query = "select * from employees where id= " . $id;
-    $query = "select * from customer";
+    $query = "select * from player";
 
     // echo $query;
   
@@ -23,7 +31,7 @@ $db = new PDO('mysql:host=localhost; dbname=customer;','root','');  // XAMPP
         PDO::FETCH_ASSOC
         */
         
-        echo htmlentities($row['first_name']). " ".htmlentities($row['last_name']) ."<br>";
+        echo htmlentities($row['firstname']). " ".htmlentities($row['lastname']) ."<br>";
         
         
     }
