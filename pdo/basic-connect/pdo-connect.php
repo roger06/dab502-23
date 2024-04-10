@@ -18,7 +18,7 @@ ini_set('display_errors', 1);
 
 //connect to db
 
-$db = new PDO('mysql:host=localhost; dbname=football;','root','password');
+$db = new PDO('mysql:host=localhost; dbname=football;','root','');
 
 var_dump($db);
 
