@@ -1,10 +1,21 @@
-<!-- basic file to capture data to be inserted
-won't re=populate any fields if there are errors.
-we really don't want to ask the user to re-enter details.
- -->
+<!--  file to capture data to be inserted that will re=populate any fields if there are errors. -->
+<pre>
+<?php
+
+if (isset($_POST['insert'])) {
+
+    echo "form posted.";
+
+    $title = $_POST['title'];
+
+    print_r($_POST);
+}
+
+
+?>
+</pre>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +24,14 @@ we really don't want to ask the user to re-enter details.
 
 <body>
     <h1>Insert book</h1>
-    <form action="insert.php" method="post"><!-- it's perhaps easier to post the form to itself  -->
+    <form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post">
 
         <p>Title*<br>
-            <input type="text" name="title">
+            <input type="text" name="title" <?php if (isset($title)) echo 'value="'.$title.'"'  ;?>    >
         </p>
 
         <p>Year*<br>
-            <input type="number" name="year">
+            <input type="number" name="year" >
         </p>
 
         <p>ISBN<br>
@@ -36,7 +47,7 @@ we really don't want to ask the user to re-enter details.
                 <option value="5">Beazley</option>
             </select>
         </p>
-        <p><input type="submit" value="Insert"></p>
+        <p><input type="submit" value="Insert" name="insert"></p>
     </form>
 
 </body>
